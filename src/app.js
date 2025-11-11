@@ -2,6 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
+import auth from './modules/auth.js';
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true, limit: '50kb' }));
@@ -13,6 +15,6 @@ app.use((err, _, res, _next) => {
     res.sendStatus(400).json({"status": "Requisição inválida", "erro:": err.message});
 });
 
-//app.use("/", user);
+app.use("/", auth);
 
 export default app;
