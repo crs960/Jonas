@@ -6,20 +6,20 @@ import middleware from '../middleware/user.js';
 const router = express.Router();
 const jwtSecret = process.env.JWT_SECRET || "";
 
-router.get("/noticias", middleware, async (req, res) => {
+router.get("/anuncios", middleware, async (req, res) => {
     const user_id = getIdByToken(req);
 
-    const noticias = await database('SELECT * FROM noticias WHERE user_id = $1;',[user_id]);
+    const noticias = await database('SELECT * FROM anuncios WHERE user_id = $1;',[user_id]);
     res.send(noticias.rows);
 });
 
-router.post("/noticias", middleware, (req, res) => {
-    const {titulo, categoria, resumo, corpo} = req.body;
+router.post("/anuncios", middleware, (req, res) => {
+    const {nome, empresa, email, tipo, mensagem, telefone} = req.body;
     const user_id = getIdByToken(req);
 
     database(
-        'INSERT INTO noticias(user_id, titulo, categoria, resumo, corpo) VALUES($1, $2, $3, $4, $5);',
-        [user_id, titulo, categoria, resumo, corpo]
+        'INSERT INTO anuncios(user_id, nome, empresa, email, tipo, mensagem, telefone) VALUES($1, $2, $3, $4, $5, $6, $7);',
+        [user_id, nome, empresa, email, tipo, mensagem, telefone]
     );
 
     res.sendStatus(201);

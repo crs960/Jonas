@@ -4,6 +4,7 @@ import cors from 'cors';
 
 import auth from './modules/auth.js';
 import noticias from './modules/noticias.js';
+import anuncios from './modules/anuncios.js';
 
 const app = express();
 
@@ -18,5 +19,6 @@ app.use((err, _, res, _next) => {
 
 app.use("/", auth);
 app.use("/", noticias);
+app.use("/", anuncios);
 
 export default app;
