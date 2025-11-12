@@ -13,7 +13,9 @@
 
 - POST /createLogin recebe (email, password) retorna status 201
 - POST /login recebe(email, password) retorna token
-- POST /noticias recebe(user_id, titulo, categoria, resumo, corpo) retorna status 201
-- GET /noticias recebe(user_id) retorna uma lista das noticias do usuário
+- POST /admin/noticias recebe(user_id, titulo, categoria, resumo, corpo) retorna status 201
+- GET /admin/noticias recebe(user_id) retorna uma lista das noticias do usuário
+- GET /noticias retorna uma lista com todas as noticias no banco de dados
+- GET /noticias/:categoria recebe o nome da categoria, retorna uma lista com todas as noticias dessa categoria
 - POST /anuncios recebe(user_id, nome, empresa, email, tipo, mensagem, telefone) retorna status 201
 - GET /anuncios recebe(user_id) retorna uma lista dos anúcios do usuário

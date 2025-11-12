@@ -6,14 +6,14 @@ import middleware from '../middleware/user.js';
 const router = express.Router();
 const jwtSecret = process.env.JWT_SECRET || "";
 
-router.get("/noticias", middleware, async (req, res) => {
+router.get("/admin/noticias", middleware, async (req, res) => {
     const user_id = getIdByToken(req);
 
     const noticias = await database('SELECT * FROM noticias WHERE user_id = $1;',[user_id]);
     res.send(noticias.rows);
 });
 
-router.post("/noticias", middleware, (req, res) => {
+router.post("/admin/noticias", middleware, (req, res) => {
     const {titulo, categoria, resumo, corpo} = req.body;
     const user_id = getIdByToken(req);
 
