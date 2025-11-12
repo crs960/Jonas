@@ -10,8 +10,7 @@ const jwtSecret = process.env.JWT_SECRET || "";
 
 
 router.post("/createLogin", middleware, async (req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
+    const {email, password} = req.body;
 
         if(typeof(await findUserByEmail(email)) == "undefined") {
             const passwordHash = await hash(password);

@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 import auth from './modules/auth.js';
+import noticias from './modules/noticias.js';
 
 const app = express();
 
@@ -16,5 +17,6 @@ app.use((err, _, res, _next) => {
 });
 
 app.use("/", auth);
+app.use("/", noticias);
 
 export default app;
